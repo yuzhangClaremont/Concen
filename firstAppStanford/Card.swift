@@ -10,7 +10,7 @@ import Foundation
 
 // difference between struct: 1.no inherantance 2.struct is value type, get copied when assigned, Class is reference type
 struct Card{
-     var isFaceUp = false
+    var isFaceUp = false
     var isMatched = false
     var identifier: Int
 //    UI independent, so no emoji instance

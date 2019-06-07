@@ -25,8 +25,7 @@ class ViewController: UIViewController {
     // var array, change var name disconnect with view
     @IBOutlet var cardsButtons: [UIButton]!//
     
-    var emojiChoices: Array<String>
-        = ["👻","🎃","😼","🧛🏼‍♂️","🧟‍♀️","🧟‍♀️","👻","🎃","🧛🏼‍♂️"] //
+ //
     var emojiHistory:[String] = ["head"]
     //outlet create variable no need to be initialized,
     @IBOutlet weak var flipCountView: UILabel!
@@ -36,7 +35,9 @@ class ViewController: UIViewController {
         
         flipCount += 1
         if let cardNumber = cardsButtons.index(of: sender) {// let to make constant, index return Int? an optional (enumeration, assocaite with int) type:set; notset (nil) 1:15:28
-            flip(withEmoji: emojiChoices[cardNumber], on: sender)
+//            flip(withEmoji: emojiChoices[cardNumber], on: sender)
+            game.chooseCard(at: cardNumber)
+            updateViewFromModel()
             emojiHistory.append(emojiChoices[cardNumber])
             print(emojiHistory)
         }else{
@@ -65,9 +66,43 @@ class ViewController: UIViewController {
                 }
             }
         }
-
+    }
+    
+    func updateViewFromModel(){
+        for index in cardsButtons.indices{
+            let button = cardsButtons[index]
+            let card = game.cards[index]
+            if card.isFaceUp{
+                button.setTitle(emoji(for:card), for: UIControlState.normal)
+                button.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+            }else{
+                button.setTitle("", for: UIControlState.normal)
+                button.backgroundColor = card.isMatched ? #colorLiteral(red: 1, green: 0.5763723254, blue: 0, alpha: 0.1049068921) : #colorLiteral(red: 1, green: 0.5763723254, blue: 0, alpha: 1)
+            }
+        }
+    }
+    
+    var emoji = Dictionary<Int,String>() //[Int,String]
+    var emojiChoices: Array<String>
+        = ["👻","🎃","😼","🧛🏼‍♂️","🧟‍♀️","🤡","🦇","🧙🏻‍♂️","🧜🏼‍♂️"]
+    func emoji(for card: Card) -> String{
+        
+        if emoji[card.identifier] == nil{
+            if emojiChoices.count > 0{
+                let randomIndex = Int(arc4random_uniform(UInt32(emojiChoices.count)))
+                emoji[card.identifier] = emojiChoices.remove(at: randomIndex)
+            }
+        }
+        
+        if emoji[card.identifier] != nil{
+            return emoji[card.identifier]!
+        }
+       
+        return "?"
+//        return emoji[card.identifier] ?? "?"
     }
  
+    
     
     
     //External name withEmoji, internal name emoji; on external
