@@ -25,16 +25,6 @@
                                 <color key="textColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pqQ-7M-HnL">
-                                <rect key="frame" x="143" y="78" width="90" height="134"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="50"/>
-                                <state key="normal" title=" "/>
-                                <connections>
-                                    <action selector="flipCard:" destination="BYZ-38-t0r" eventType="touchUpInside" id="x0p-VS-L6A"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gjf-PX-peB">
                                 <rect key="frame" x="31" y="246" width="90" height="134"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -122,7 +112,6 @@
                     <connections>
                         <outlet property="flipCountView" destination="yxM-GU-4W7" id="exd-lr-qAM"/>
                         <outletCollection property="cardsButtons" destination="Ciz-5M-ied" collectionClass="NSMutableArray" id="Jfg-OP-G9d"/>
-                        <outletCollection property="cardsButtons" destination="pqQ-7M-HnL" collectionClass="NSMutableArray" id="yfQ-qg-6e8"/>
                         <outletCollection property="cardsButtons" destination="Gjf-PX-peB" collectionClass="NSMutableArray" id="Pg1-n0-dbi"/>
                         <outletCollection property="cardsButtons" destination="b1I-02-Tv7" collectionClass="NSMutableArray" id="dTO-ci-j5l"/>
                         <outletCollection property="cardsButtons" destination="wnA-Os-b36" collectionClass="NSMutableArray" id="NhN-Qq-WKF"/>
