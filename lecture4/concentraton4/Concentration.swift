@@ -17,19 +17,23 @@ struct Concentration{
     private var indexOfOneAndOnlyFaceUpCard: Int?
     {
         get{
-            var foundIndex: Int?
-            for index in cards.indices{
-//                print(index)
-//                print(self.indexOfOneAndOnlyFaceUpCard)
-                if cards[index].isFaceUp{
-                    if foundIndex == nil{
-                        foundIndex = index
-                    }else{
-                        return nil
-                    }
-                }
-            }
-            return foundIndex
+            // array of indices if face up
+            return cards.indices.filter({cards[$0].isFaceUp}).oneAndOnly
+//            return faceUpCardIndex.count == 1 ? faceUpCardIndex.first : nil
+           
+//            var foundIndex: Int?
+//            for index in cards.indices{
+////                print(index)
+////                print(self.indexOfOneAndOnlyFaceUpCard)
+//                if cards[index].isFaceUp{
+//                    if foundIndex == nil{
+//                        foundIndex = index
+//                    }else{
+//                        return nil
+//                    }
+//                }
+//            }
+//            return foundIndex
         }
 
         set{
@@ -95,4 +99,11 @@ struct Concentration{
 
     }
     
+}
+extension Collection
+{
+    var oneAndOnly: Element?
+    {
+        return count == 1 ? first : nil
+    }
 }
