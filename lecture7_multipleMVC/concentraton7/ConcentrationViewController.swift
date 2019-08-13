@@ -5,9 +5,11 @@
 //  Created by Yun Zhang on 7/30/18.
 //  Copyright © 2018 Yun Zhang. All rights reserved.
 
+
 import UIKit
 
-class ViewController: UIViewController {
+// rename ViewController: cmd+click
+class ConcentrationViewController: UIViewController {
 
     @IBOutlet private var cardsButtons: [UIButton]!
     
@@ -24,7 +26,7 @@ class ViewController: UIViewController {
     {
         let attributes: [NSAttributedStringKey:Any] = [
             .strokeWidth : 5.0,
-            .strokeColor : UIColor.lightGray
+            .strokeColor : #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
         ]
         
         let text_flipCount = "Flips: \(flipCount)"
@@ -65,25 +67,39 @@ class ViewController: UIViewController {
     
 // update UI is internal implementation
     private func updateViewFromModel(){
-        for index in cardsButtons.indices{
-
-            let button = cardsButtons[index]
-            let card = game.cards[index]
-            if card.isFaceUp{
-//                print("update view \(index)")
-                button.setTitle(emoji(for:card), for: UIControlState.normal)
-                button.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-            }else{
-                button.setTitle("", for: UIControlState.normal)
-
-                button.backgroundColor = card.isMatched ? #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0):#colorLiteral(red: 1, green: 0.5763723254, blue: 0, alpha: 1)
-
+        // to prevent segued empty button
+        if cardsButtons != nil
+        {
+            for index in cardsButtons.indices
+            {
+                let button = cardsButtons[index]
+                let card = game.cards[index]
+                if card.isFaceUp{
+                    //                print("update view \(index)")
+                    button.setTitle(emoji(for:card), for: UIControlState.normal)
+                    button.backgroundColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
+                }else{
+                    button.setTitle("", for: UIControlState.normal)
+                    
+                    button.backgroundColor = card.isMatched ? #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0):#colorLiteral(red: 0, green: 0.4784313725, blue: 1, alpha: 1)
+                    
+                }
             }
+        }
+ 
+    }
+    
+    // Card theme:
+    var theme: String?
+    {
+        didSet {
+            emojiChoices = theme ?? ""
+            emojiDict = [:] // reset EmojiDict to all not used
+            updateViewFromModel() // Update the view live during a game. mind nil button bug
         }
     }
     
 // either privte or internal works, but make private first
-//    private var emojiHistory:[String] = ["head"]
     
     // bound a card with a emoji
     private var emojiDict = [Card:String]()
