@@ -67,11 +67,10 @@ class ConcentrationViewController: UIViewController {
     
 // update UI is internal implementation
     private func updateViewFromModel(){
-        // to prevent segued empty button
         if cardsButtons != nil
         {
-            for index in cardsButtons.indices
-            {
+            for index in cardsButtons.indices{
+                
                 let button = cardsButtons[index]
                 let card = game.cards[index]
                 if card.isFaceUp{
@@ -86,7 +85,7 @@ class ConcentrationViewController: UIViewController {
                 }
             }
         }
- 
+
     }
     
     // Card theme:
@@ -95,7 +94,7 @@ class ConcentrationViewController: UIViewController {
         didSet {
             emojiChoices = theme ?? ""
             emojiDict = [:] // reset EmojiDict to all not used
-            updateViewFromModel() // Update the view live during a game. mind nil button bug
+            updateViewFromModel() // Update the view live during a game
         }
     }
     
