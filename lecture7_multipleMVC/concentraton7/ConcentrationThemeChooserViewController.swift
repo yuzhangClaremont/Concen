@@ -16,10 +16,41 @@
 
 // MGIsDeviceOneOfType is not supported on this platform. disable scheme: https://stackoverflow.com/questions/50701321/xcode-error-on-simulator-mgisdeviceoneoftype-is-not-supported-on-this-platform?noredirect=1&lq=1
 
+// in ipad, we will split the  view. drag split view controller , ctrl drag splitvieController to nevivator with master view controller. control drag to detail with detail vie controller
 import UIKit
+// to set default view as menu, master view, add protocal as UISplitViewDelegate
+class ConcentrationThemeChooserViewController: UIViewController, UISplitViewControllerDelegate {
 
-class ConcentrationThemeChooserViewController: UIViewController {
+    // Delegate?? : https://medium.com/@jamesrochabrun/implementing-delegates-in-swift-step-by-step-d3211cbac3ef
+    // to make adaptable for iphone ?? https://stackoverflow.com/questions/31993079/difference-between-awakefromnib-and-viewdidload-in-swift
+    override func awakeFromNib() {
+        splitViewController?.delegate = self
+    }
+    
+    // when split view controller not working: https://stackoverflow.com/questions/29506713/open-uisplitviewcontroller-to-master-view-rather-than-detail
+    override func viewDidLoad() {
+        splitViewController?.delegate = self
+        splitViewController?.preferredDisplayMode = .allVisible
+    }
+    
+    // to make adaptable for iphone
+    // CUSTOM:          "I'm adapting to the fact I'm a SplitViewController for iPhone and I want to collapse on the Detail page using a NavigationController. Should I do it?"
+    // return true:     "Don't do it"
+    // return false:    "I did not collapse this, so you do it!"
+    func splitViewController(_ splitViewController: UISplitViewController,
+                             collapseSecondary secondaryViewController: UIViewController,
+                             onto primaryViewController: UIViewController) -> Bool
+    {
+        if let cvc = secondaryViewController as? ConcentrationViewController {
+            if cvc.theme == nil {
+                return true
+            }
+        }
 
+        return false
+    }
+    
+    
 
     // Themes
         let themes = [
@@ -43,7 +74,7 @@ class ConcentrationThemeChooserViewController: UIViewController {
                         {// destination is a UIViewcontroler, so down cast to concentration viewcontroller
                             if let cvc = segue.destination as? ConcentrationViewController {
                                 cvc.theme = theme // cvc. them in ConcentraonViewController
-    //                            lastSeguedToConcentrationViewController = cvc
+
                             }
                         }
                     }
@@ -53,35 +84,4 @@ class ConcentrationThemeChooserViewController: UIViewController {
         }
     
    
-    
-    // [!]: iPad only: Only iPads have SplitViewController
-//    private var splitViewDetailConcentrationViewController:ConcentrationViewController? {
-//        return splitViewController?.viewControllers.last as? ConcentrationViewController
-//    }
-//
-    // Strong pointer
-//    private var lastSeguedToConcentrationViewController: ConcentrationViewController?
-    
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
-//    {
-//        if segue.identifier == "Choose Theme" {
-//
-//
-//            // Short way:
-//            if let themeName = (sender as? UIButton)?.currentTitle,
-//                let theme = themes[themeName] {
-//
-//                // Case: Successful segue
-//                // [!]: Typecast from superclass [UIViewController] to child: [ConcentrationViewController]
-//                if let cvc = segue.destination as? ConcentrationViewController {
-//                    cvc.theme = theme
-////                    lastSeguedToConcentrationViewController = cvc
-//                }
-//            }
-//
-//
-//        }
-//    }
-
 }

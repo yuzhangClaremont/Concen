@@ -16,7 +16,6 @@
 		21E850AA210ED0DC00FF5649 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 21E850A8210ED0DC00FF5649 /* LaunchScreen.storyboard */; };
 		21E850B32110876C00FF5649 /* Concentration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E850B22110876C00FF5649 /* Concentration.swift */; };
 		21FAC2622303530F0038D5F0 /* ConcentrationThemeChooserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21FAC2612303530F0038D5F0 /* ConcentrationThemeChooserViewController.swift */; };
-		21FAC26423036A1E0038D5F0 /* ThemeChooserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21FAC26323036A1E0038D5F0 /* ThemeChooserViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,7 +30,6 @@
 		21E850B22110876C00FF5649 /* Concentration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Concentration.swift; sourceTree = "<group>"; };
 		21E850B4211088E900FF5649 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		21FAC2612303530F0038D5F0 /* ConcentrationThemeChooserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConcentrationThemeChooserViewController.swift; sourceTree = "<group>"; };
-		21FAC26323036A1E0038D5F0 /* ThemeChooserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeChooserViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,7 +66,6 @@
 				21E850B1210ED35300FF5649 /* Supporting File */,
 				21E850A1210ED0D800FF5649 /* ConcentrationViewController.swift */,
 				21E850A3210ED0D800FF5649 /* Main.storyboard */,
-				21FAC26323036A1E0038D5F0 /* ThemeChooserViewController.swift */,
 				21FAC2612303530F0038D5F0 /* ConcentrationThemeChooserViewController.swift */,
 				21E850B22110876C00FF5649 /* Concentration.swift */,
 				21E850B4211088E900FF5649 /* Card.swift */,
@@ -161,7 +158,6 @@
 			files = (
 				21FAC2622303530F0038D5F0 /* ConcentrationThemeChooserViewController.swift in Sources */,
 				21D8CCF322EA6FBF007758A1 /* Card.swift in Sources */,
-				21FAC26423036A1E0038D5F0 /* ThemeChooserViewController.swift in Sources */,
 				21E850A2210ED0D800FF5649 /* ConcentrationViewController.swift in Sources */,
 				21E850B32110876C00FF5649 /* Concentration.swift in Sources */,
 				21E850A0210ED0D800FF5649 /* AppDelegate.swift in Sources */,
